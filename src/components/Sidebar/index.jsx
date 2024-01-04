@@ -37,7 +37,7 @@ const Sidebar = () => {
     }, []);
 
     return (
-        <div className={`w-[320px] z-[999] min-h-screen px-2 py-4 bg-black transition-all ease-in-out duration-300 transform ${open ? 'translate-x-0 relative' : '-translate-x-full absolute'}`}>
+        <div className={`w-[320px] z-[999] min-h-screen px-2 py-4 bg-black transition-all ease-in-out duration-300 transform ${open ? 'translate-x-0 absolute' : '-translate-x-full relative '}`}>
             <h1 className='text-[15px] mt-5 text-center text-white font-bold md:text-[26px]'>Welcome Admin</h1>
             <div className='pl-[50px] mt-2 flex flex-col items-start justify-center w-full'>
                 <ul className='mt-5'>
