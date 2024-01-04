@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setOpen } from '../../redux/slices/sidebarValue';
 
 const Sidebar = () => {
     const navigate = useNavigate();
-    const [open, setOpen] = useState(window.innerWidth > 700);
+    const dispatch = useDispatch()
+    const open = useSelector((state) => state?.sidebarValue?.open)
 
     const list = [
         {
@@ -23,7 +26,7 @@ const Sidebar = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            setOpen(window.innerWidth > 900);
+            dispatch(setOpen(window.innerWidth > 700));
         };
 
         window.addEventListener('resize', handleResize);
@@ -34,9 +37,8 @@ const Sidebar = () => {
     }, []);
 
     return (
-        <div className={`w-[320px] ${window.innerWidth > 900 ? "relative" : 'absolute'} z-[999] h-screen px-2 py-4 bg-black transition-all ease-in-out duration-300 transform ${open ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className={`w-[320px] z-[999] min-h-screen px-2 py-4 bg-black transition-all ease-in-out duration-300 transform ${open ? 'translate-x-0 relative' : '-translate-x-full absolute'}`}>
             <h1 className='text-[15px] mt-5 text-center text-white font-bold md:text-[26px]'>Welcome Admin</h1>
-
             <div className='pl-[50px] mt-2 flex flex-col items-start justify-center w-full'>
                 <ul className='mt-5'>
                     {list?.map((item) => {

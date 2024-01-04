@@ -28,6 +28,11 @@
     animation-fill-mode: both;
 }
 
+.sidebar {
+    transition: transform 0.3s ease-in-out;
+}
+
+
 /* Optional: Add media query for smaller screens */
 @media (max-width: 700px) {
     .transform {
